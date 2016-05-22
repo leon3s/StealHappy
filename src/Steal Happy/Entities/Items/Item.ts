@@ -1,0 +1,4 @@
+﻿class Item extends Entity {
+
+
+}

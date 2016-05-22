@@ -1,0 +1,6 @@
+C:\Users\Clovis\Documents\developpement\web\commande-allard\Steal Happy\Steal Happy\Steal Happy\obj\Debug\Steal Happy.csprojResolveAssemblyReference.cache
+C:\Users\Clovis\Documents\developpement\web\commande-allard\Steal Happy\Steal Happy\Steal Happy\bin\Steal Happy.dll.config
+C:\Users\Clovis\Documents\developpement\web\commande-allard\Steal Happy\Steal Happy\Steal Happy\bin\Steal Happy.dll
+C:\Users\Clovis\Documents\developpement\web\commande-allard\Steal Happy\Steal Happy\Steal Happy\bin\Steal Happy.pdb
+C:\Users\Clovis\Documents\developpement\web\commande-allard\Steal Happy\Steal Happy\Steal Happy\obj\Debug\Steal Happy.dll
+C:\Users\Clovis\Documents\developpement\web\commande-allard\Steal Happy\Steal Happy\Steal Happy\obj\Debug\Steal Happy.pdb
