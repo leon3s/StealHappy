@@ -1,5 +1,6 @@
 var Scene = (function () {
     function Scene() {
+        this.entities = new Array();
     }
     Scene.prototype.addEntity = function (entity) {
         if (entity != null)
@@ -21,6 +22,12 @@ var Scene = (function () {
         this.entities.forEach(function (entity) {
             entity.draw();
         });
+    };
+    //Doit être appelé lors de l'entrée dans la scene
+    Scene.prototype.onEnter = function () {
+    };
+    //Doit être appelé lors de la sortie de la scene
+    Scene.prototype.onLeave = function () {
     };
     return Scene;
 }());

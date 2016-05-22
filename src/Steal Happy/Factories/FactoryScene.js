@@ -5,7 +5,14 @@ var FactoryScene = (function () {
         return FactoryScene.instance;
     };
     FactoryScene.SetScene = function (scene) {
-        FactoryScene.instance = scene;
+        FactoryScene.next = scene;
+        new Transition(Transition_Direction.Right, FactoryScene.DoSetScene);
+    };
+    FactoryScene.DoSetScene = function () {
+        if (FactoryScene.instance != null)
+            FactoryScene.instance.onLeave();
+        FactoryScene.instance = FactoryScene.next;
+        FactoryScene.instance.onEnter();
     };
     return FactoryScene;
 }());

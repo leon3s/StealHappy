@@ -29,6 +29,14 @@
         this.velocity_y = y;
     }
 
+    public VelocityX(): number {
+        return this.velocity_x;
+    }
+
+    public VelocityY(): number {
+        return this.velocity_y;
+    }
+
     public setZ(z: number): void {
         this.z = z;
     }
@@ -38,11 +46,37 @@
         this.y = y;
     }
 
+    public X(): number {
+        return this.x;
+    }
+
+    public Y(): number {
+        return this.y
+    }
+
+    public Width(): number {
+        return this.width;
+    }
+
+    public Height(): number {
+        return this.height
+    }
+
     public update(): void {
+        if (Math.round(this.velocity_x) < 0.05) this.velocity_x = 0;
+        if (Math.round(this.velocity_y) < 0.05) this.velocity_y = 0;
         this.x += 0.03 * this.velocity_x;
         this.y += 0.03 * this.velocity_y;
 
         this.sprite.setPosition(this.x, this.y);
+    }
+
+    public bounceX(): void {
+        this.velocity_x = this.velocity_x * -0.5;
+    }
+
+    public bounceY(): void {
+        this.velocity_y = this.velocity_y * - 0.5;
     }
 
     public draw(): void {

@@ -24,17 +24,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="Assets\Background\Bedroom.png" />
     <Content Include="index.html" />
     <Content Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="Core\Sprite.ts" />
+    <TypeScriptCompile Include="Core\Transition.ts" />
     <TypeScriptCompile Include="Entities\Entity.ts" />
     <TypeScriptCompile Include="Entities\Items\Item.ts" />
     <TypeScriptCompile Include="Factories\FactoryScene.ts" />
     <TypeScriptCompile Include="Scenes\Scene.ts" />
-    <TypeScriptCompile Include="Scenes\SceneLifeRoom.ts" />
+    <TypeScriptCompile Include="Scenes\SceneLivingRoom.ts" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

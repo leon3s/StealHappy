@@ -14,6 +14,12 @@ var Entity = (function () {
         this.velocity_x = x;
         this.velocity_y = y;
     };
+    Entity.prototype.VelocityX = function () {
+        return this.velocity_x;
+    };
+    Entity.prototype.VelocityY = function () {
+        return this.velocity_y;
+    };
     Entity.prototype.setZ = function (z) {
         this.z = z;
     };
@@ -21,10 +27,32 @@ var Entity = (function () {
         this.x = x;
         this.y = y;
     };
+    Entity.prototype.X = function () {
+        return this.x;
+    };
+    Entity.prototype.Y = function () {
+        return this.y;
+    };
+    Entity.prototype.Width = function () {
+        return this.width;
+    };
+    Entity.prototype.Height = function () {
+        return this.height;
+    };
     Entity.prototype.update = function () {
+        if (Math.round(this.velocity_x) < 0.05)
+            this.velocity_x = 0;
+        if (Math.round(this.velocity_y) < 0.05)
+            this.velocity_y = 0;
         this.x += 0.03 * this.velocity_x;
         this.y += 0.03 * this.velocity_y;
         this.sprite.setPosition(this.x, this.y);
+    };
+    Entity.prototype.bounceX = function () {
+        this.velocity_x = this.velocity_x * -0.5;
+    };
+    Entity.prototype.bounceY = function () {
+        this.velocity_y = this.velocity_y * -0.5;
     };
     Entity.prototype.draw = function () {
         this.sprite.draw(Greeter.Context);

@@ -1,6 +1,10 @@
 ﻿class Scene {
     protected entities: Array<Entity>;
 
+    constructor() {
+        this.entities = new Array<Entity>();
+    }
+
     public addEntity(entity: Entity): void {
         if(entity != null)
             this.entities.push(entity);
@@ -25,5 +29,15 @@
         this.entities.forEach(function (entity) {
             entity.draw();
         });
+    }
+
+    //Doit être appelé lors de l'entrée dans la scene
+    public onEnter(): void {
+
+    }
+
+    //Doit être appelé lors de la sortie de la scene
+    public onLeave(): void {
+
     }
 }
