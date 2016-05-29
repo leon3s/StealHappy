@@ -1,5 +1,6 @@
 ﻿class Scene {
     protected entities: Array<Entity>;
+    protected transition: Transition;
 
     constructor() {
         this.entities = new Array<Entity>();
@@ -18,14 +19,24 @@
         }
     }
 
+    public startTransition(dir: Transition_Direction, callback : any) {
+        if (this.transition == null) {
+            this.transition = new Transition(dir, callback);
+        }
+    }
+
     public update() : void
     {
+        if (this.transition != null)
+            this.transition = this.transition.update();
         this.entities.forEach(function (entity) {
             entity.update();
         });
     }
 
     public draw(): void {
+        if (this.transition != null)
+            this.transition.draw(Greeter.Context);
         this.entities.forEach(function (entity) {
             entity.draw();
         });

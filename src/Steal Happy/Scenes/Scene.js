@@ -13,12 +13,21 @@ var Scene = (function () {
             }
         }
     };
+    Scene.prototype.startTransition = function (dir, callback) {
+        if (this.transition == null) {
+            this.transition = new Transition(dir, callback);
+        }
+    };
     Scene.prototype.update = function () {
+        if (this.transition != null)
+            this.transition = this.transition.update();
         this.entities.forEach(function (entity) {
             entity.update();
         });
     };
     Scene.prototype.draw = function () {
+        if (this.transition != null)
+            this.transition.draw(Greeter.Context);
         this.entities.forEach(function (entity) {
             entity.draw();
         });

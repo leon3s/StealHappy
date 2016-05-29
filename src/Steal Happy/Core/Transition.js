@@ -13,21 +13,18 @@ var Transition_Direction;
 var Transition = (function (_super) {
     __extends(Transition, _super);
     function Transition(dir, callback) {
-        var _this = this;
         _super.call(this, 0, 0, Greeter.Width, Greeter.Height, "Assets/Transition.png");
         this.callback = callback;
+        this.dir = dir;
         switch (dir) {
             //TODO: implémenter les autres directions
             case Transition_Direction.Right:
                 this.setPosition(-Greeter.Width, -105);
-                this.timer = setInterval(function () {
-                    _this.update(dir);
-                }, 20);
                 break;
         }
     }
-    Transition.prototype.update = function (dir) {
-        switch (dir) {
+    Transition.prototype.update = function () {
+        switch (this.dir) {
             //TODO: implémener les autres directions
             case Transition_Direction.Right:
                 this.setPosition(this.X() + Transition.Speed, -105);
@@ -35,10 +32,10 @@ var Transition = (function (_super) {
                     this.callback();
                 }
                 if (this.X() >= Greeter.Width) {
-                    clearInterval(this.timer);
+                    return null;
                 }
         }
-        this.draw(Greeter.Context);
+        return this;
     };
     //TODO: revoir le système de transitions
     Transition.Speed = 10;

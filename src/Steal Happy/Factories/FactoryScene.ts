@@ -9,7 +9,11 @@
 
     public static SetScene(scene: Scene): void {
         FactoryScene.next = scene;
-        new Transition(Transition_Direction.Right, FactoryScene.DoSetScene);
+        if (FactoryScene.instance == null) {
+            FactoryScene.DoSetScene();
+            return;
+        }
+        FactoryScene.instance.startTransition(Transition_Direction.Right, FactoryScene.DoSetScene);
     }
 
     public static DoSetScene(): void {

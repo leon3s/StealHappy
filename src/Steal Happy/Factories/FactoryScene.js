@@ -6,7 +6,11 @@ var FactoryScene = (function () {
     };
     FactoryScene.SetScene = function (scene) {
         FactoryScene.next = scene;
-        new Transition(Transition_Direction.Right, FactoryScene.DoSetScene);
+        if (FactoryScene.instance == null) {
+            FactoryScene.DoSetScene();
+            return;
+        }
+        FactoryScene.instance.startTransition(Transition_Direction.Right, FactoryScene.DoSetScene);
     };
     FactoryScene.DoSetScene = function () {
         if (FactoryScene.instance != null)
