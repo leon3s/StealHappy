@@ -37,7 +37,6 @@ var Transition = (function (_super) {
         }
         return this;
     };
-    //TODO: revoir le système de transitions
     Transition.Speed = 10;
     return Transition;
 }(Sprite));

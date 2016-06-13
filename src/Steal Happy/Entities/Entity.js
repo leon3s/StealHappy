@@ -39,6 +39,16 @@ var Entity = (function () {
     Entity.prototype.Height = function () {
         return this.height;
     };
+    Entity.prototype.setSize = function (w, h) {
+        this.width = w;
+        this.height = h;
+    };
+    Entity.prototype.getSprite = function () {
+        return this.sprite;
+    };
+    Entity.prototype.setSprite = function (sprite) {
+        this.sprite = sprite;
+    };
     Entity.prototype.update = function () {
         if (Math.round(this.velocity_x) < 0.05)
             this.velocity_x = 0;

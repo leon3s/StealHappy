@@ -6,11 +6,19 @@
         this.entities = new Array<Entity>();
     }
 
+    /**
+     * Ajoute une nouvelle entité dans la scene
+     * @param entity entité à ajouter
+     */
     public addEntity(entity: Entity): void {
         if(entity != null)
             this.entities.push(entity);
     }
 
+    /**
+     * Supprime une entité de la scene
+     * @param entity entité à supprimer
+     */
     public removeEntity(entity: Entity): void {
         for (var x: number; x != this.entities.length; x++) {
             if (this.entities[x] == entity) {
@@ -19,12 +27,20 @@
         }
     }
 
+    /**
+     * Démare une transition pour changer de salle
+     * @param dir direction de la transition
+     * @param callback action à réalisé en milieu de parcours de la transition
+     */
     public startTransition(dir: Transition_Direction, callback : any) {
         if (this.transition == null) {
             this.transition = new Transition(dir, callback);
         }
     }
 
+    /**
+     * Met à jour la scene
+     */
     public update() : void
     {
         if (this.transition != null)
@@ -34,6 +50,9 @@
         });
     }
 
+    /**
+     * Dessine la scene
+     */
     public draw(): void {
         if (this.transition != null)
             this.transition.draw(Greeter.Context);

@@ -3,15 +3,22 @@
     //Importance de la gravité
     private static Gravity: number = 0.6;
     //Position du sol
-    private static Ground: number = 400;
+    private static Ground: number = 700;
 
+    //Image de fond
     private background : Sprite = null;
 
+    /**
+     * Met à jour la scene
+     */
     public update(): void {
         super.update();
         this.physics();
     }
 
+    /**
+     * Gère la physique dans la scene
+     */
     public physics(): void {
         this.entities.forEach(function (entity) {
 
@@ -23,19 +30,31 @@
         });
     }
 
+    /**
+     * Dessine la scene
+     */
     public draw(): void {
         this.background.draw(Greeter.Context);
         super.draw();
     }
 
+    /**
+     * Action réalisée lors de l'entrée dans la scene
+     */
     public onEnter(): void {
         super.onEnter();
         if (this.background == null)
             this.background = new Sprite(0, 0, Greeter.Width, Greeter.Height, "Assets/Background/Bedroom.png");
         else
             this.background.load();
+        //instanciation du joueur
+        //TODO: revoir l'instanciation en fonction de l'état réel 
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby));
     }
 
+    /**
+     * Action réalisée lors de la sortie de la scene
+     */
     public onLeave(): void {
         super.onLeave();
         this.background.unload();

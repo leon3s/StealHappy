@@ -62,13 +62,26 @@
         return this.height
     }
 
+    public setSize(w: number, h: number): void {
+        this.width = w;
+        this.height = h;
+    }
+
+    public getSprite(): Sprite {
+        return this.sprite;
+    }
+
+    public setSprite(sprite: Sprite): void {
+        this.sprite = sprite;
+    }
+
     public update(): void {
         if (Math.round(this.velocity_x) < 0.05) this.velocity_x = 0;
         if (Math.round(this.velocity_y) < 0.05) this.velocity_y = 0;
         this.x += 0.03 * this.velocity_x;
         this.y += 0.03 * this.velocity_y;
 
-        this.sprite.setPosition(this.x, this.y);
+       this.sprite.setPosition(this.x, this.y);
     }
 
     public bounceX(): void {
@@ -82,6 +95,7 @@
     public draw(): void {
         this.sprite.draw(Greeter.Context);
     }
+
 
 
 }

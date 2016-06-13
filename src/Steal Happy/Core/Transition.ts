@@ -8,7 +8,7 @@
 
 
 class Transition extends Sprite {
-    //TODO: revoir le système de transitions
+
     private static Speed : number = 10;
 
     private dir: Transition_Direction;
