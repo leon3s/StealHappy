@@ -11,7 +11,7 @@
     }
 
     public start(): void {
-        this.timer = setInterval(() => { this.update() }, 100);
+        this.timer = setInterval(() => { this.update() }, 20);
         FactoryScene.SetScene(new SceneLivingRoom());
     }
 

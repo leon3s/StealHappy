@@ -70,13 +70,13 @@
      */
     public draw(context: CanvasRenderingContext2D) {
 
-        context.fillStyle = "#FF0000";
+        /*context.fillStyle = "#FF0000";
         context.fillRect(this.x, this.y, this.width, this.height);
         context.fillStyle = "#00FF00";
-        context.fillRect(this.x, this.y, this.width - this.origin_x, this.height - this.origin_y);
+        context.fillRect(this.x, this.y, this.width - this.origin_x, this.height - this.origin_y);*/
         context.drawImage(this.image, Math.floor(this.frame) * this.width, 0, this.width, this.height, this.x - this.origin_x, this.y - this.origin_y, this.width, this.height);
         //context.drawImage(this.image, this.x, this.y, this.width, this.height + this.y, Math.floor(this.frame) * this.width - this.origin_x, -this.origin_y, this.width, this.height);
-        console.log(this.x + " " + this.y + " " + this.width + " " + this.height);
+        //console.log(this.x + " " + this.y + " " + this.width + " " + this.height);
     }
 
     /**

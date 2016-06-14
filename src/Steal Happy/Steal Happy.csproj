@@ -123,7 +123,6 @@
     <TypeScriptCompile Include="Entities\Entity.ts" />
     <TypeScriptCompile Include="Entities\Items\Item.ts" />
     <TypeScriptCompile Include="Entities\Player\Player.ts" />
-    <TypeScriptCompile Include="Entities\Player\PlayerAge.ts" />
     <TypeScriptCompile Include="Entities\Player\PlayerBaby.ts" />
     <TypeScriptCompile Include="Factories\FactoryPlayer.ts" />
     <TypeScriptCompile Include="Factories\FactoryScene.ts" />

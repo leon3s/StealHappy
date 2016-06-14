@@ -1,14 +1,13 @@
 ﻿/**
- * Décorateur concret pour player, implémente le comportement d'un bébé
+ * Implémentation concrète de player, pour l'age bébé
  */
-class PlayerBaby extends PlayerAge {
+class PlayerBaby extends Player {
 
-    constructor(player: Player) {
-        super(player);
-        this.player = player;
-        this.player.setSprite(new Sprite(this.player.X(), this.player.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
-        this.player.getSprite().setOrigin(64, 64);
-        this.player.setSize(78, 128);
+    constructor() {
+        super();
+        this.setSprite(new Sprite(this.X(), this.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
+        this.getSprite().setOrigin(64, 64);
+        this.setSize(78, 128);
     }
 
 }

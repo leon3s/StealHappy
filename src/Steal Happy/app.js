@@ -6,7 +6,7 @@ var Greeter = (function () {
     }
     Greeter.prototype.start = function () {
         var _this = this;
-        this.timer = setInterval(function () { _this.update(); }, 100);
+        this.timer = setInterval(function () { _this.update(); }, 20);
         FactoryScene.SetScene(new SceneLivingRoom());
     };
     Greeter.prototype.stop = function () {

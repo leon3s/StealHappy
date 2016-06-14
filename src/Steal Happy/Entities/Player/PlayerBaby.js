@@ -4,17 +4,16 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * Décorateur concret pour player, implémente le comportement d'un bébé
+ * Implémentation concrète de player, pour l'age bébé
  */
 var PlayerBaby = (function (_super) {
     __extends(PlayerBaby, _super);
-    function PlayerBaby(player) {
-        _super.call(this, player);
-        this.player = player;
-        this.player.setSprite(new Sprite(this.player.X(), this.player.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
-        this.player.getSprite().setOrigin(64, 64);
-        this.player.setSize(78, 128);
+    function PlayerBaby() {
+        _super.call(this);
+        this.setSprite(new Sprite(this.X(), this.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
+        this.getSprite().setOrigin(64, 64);
+        this.setSize(78, 128);
     }
     return PlayerBaby;
-}(PlayerAge));
+}(Player));
 //# sourceMappingURL=PlayerBaby.js.map

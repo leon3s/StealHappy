@@ -1,7 +1,7 @@
 ﻿class SceneLivingRoom extends Scene {
 
     //Importance de la gravité
-    private static Gravity: number = 0.6;
+    private static Gravity: number = 4;
     //Position du sol
     private static Ground: number = 700;
 
@@ -23,10 +23,15 @@
         this.entities.forEach(function (entity) {
 
             //Gestion de la gravité
-            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && entity.VelocityY() != 0)
+            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && entity.VelocityY() > 0)
+            {
                 entity.bounceY();
+            }
             else 
                 entity.setVelocity(entity.VelocityX(), entity.VelocityY() + SceneLivingRoom.Gravity);
+            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && Math.abs(entity.VelocityY()) <= SceneLivingRoom.Gravity)
+                entity.setVelocity(entity.VelocityX(), 0);
+
         });
     }
 
@@ -49,7 +54,7 @@
             this.background.load();
         //instanciation du joueur
         //TODO: revoir l'instanciation en fonction de l'état réel 
-        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby));
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width/2, 0));
     }
 
     /**
