@@ -13,7 +13,18 @@ var PlayerBaby = (function (_super) {
         this.setSprite(new Sprite(this.X(), this.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
         this.getSprite().setOrigin(64, 64);
         this.setSize(78, 128);
+        this.sprite.setFrameSpeed(0.1);
     }
+    /**
+     * Actions à effectuer lors du clic sur le personnage
+     */
+    PlayerBaby.prototype.interact = function () {
+        if (_super.prototype.interact.call(this) == true)
+            return true;
+        if (this.VelocityY() == 0)
+            this.setVelocity(this.VelocityX(), this.VelocityY() - 100);
+        return true;
+    };
     return PlayerBaby;
 }(Player));
 //# sourceMappingURL=PlayerBaby.js.map

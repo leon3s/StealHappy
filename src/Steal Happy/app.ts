@@ -1,4 +1,6 @@
 ﻿class Greeter {
+    public static CanvasName: string = 'canvas';
+
     public static Context: CanvasRenderingContext2D;
     public static Width: number;
     public static Height: number; 
@@ -13,6 +15,9 @@
     public start(): void {
         this.timer = setInterval(() => { this.update() }, 20);
         FactoryScene.SetScene(new SceneLivingRoom());
+        document.getElementById(Greeter.CanvasName).addEventListener('click', function (e) {
+            FactoryScene.instance.interact(e.offsetX, e.offsetY);
+        });
     }
 
     public stop(): void {
@@ -29,7 +34,7 @@
 }
 
 window.onload = () => {
-    var el = <HTMLCanvasElement>document.getElementById('canvas');
+    var el = <HTMLCanvasElement>document.getElementById(Greeter.CanvasName);
     var greeter = new Greeter(el);
     greeter.start();
 };

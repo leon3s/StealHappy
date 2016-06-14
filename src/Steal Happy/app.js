@@ -8,6 +8,9 @@ var Greeter = (function () {
         var _this = this;
         this.timer = setInterval(function () { _this.update(); }, 20);
         FactoryScene.SetScene(new SceneLivingRoom());
+        document.getElementById(Greeter.CanvasName).addEventListener('click', function (e) {
+            FactoryScene.instance.interact(e.offsetX, e.offsetY);
+        });
     };
     Greeter.prototype.stop = function () {
         clearInterval(this.timer);
@@ -18,10 +21,11 @@ var Greeter = (function () {
             FactoryScene.Scene().draw();
         }
     };
+    Greeter.CanvasName = 'canvas';
     return Greeter;
 }());
 window.onload = function () {
-    var el = document.getElementById('canvas');
+    var el = document.getElementById(Greeter.CanvasName);
     var greeter = new Greeter(el);
     greeter.start();
 };

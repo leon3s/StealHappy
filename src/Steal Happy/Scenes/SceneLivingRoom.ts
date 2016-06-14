@@ -47,7 +47,6 @@
      * Action réalisée lors de l'entrée dans la scene
      */
     public onEnter(): void {
-        super.onEnter();
         if (this.background == null)
             this.background = new Sprite(0, 0, Greeter.Width, Greeter.Height, "Assets/Background/Bedroom.png");
         else
@@ -61,7 +60,20 @@
      * Action réalisée lors de la sortie de la scene
      */
     public onLeave(): void {
-        super.onLeave();
         this.background.unload();
+    }
+
+    /**
+     * Gère les interractions avec les elements
+     * @param x position x du clic
+     * @param y position y du clic
+     */
+    public interact(x: number, y: number) {
+        for (var i: number = 0; i != this.entities.length; i++) {
+            var entity: Entity = this.entities[i];
+            
+            if (entity != null && entity.contains(x,y) && entity.interact() == true)
+                break;
+        }
     }
 }

@@ -43,7 +43,6 @@ var SceneLivingRoom = (function (_super) {
      * Action réalisée lors de l'entrée dans la scene
      */
     SceneLivingRoom.prototype.onEnter = function () {
-        _super.prototype.onEnter.call(this);
         if (this.background == null)
             this.background = new Sprite(0, 0, Greeter.Width, Greeter.Height, "Assets/Background/Bedroom.png");
         else
@@ -56,8 +55,19 @@ var SceneLivingRoom = (function (_super) {
      * Action réalisée lors de la sortie de la scene
      */
     SceneLivingRoom.prototype.onLeave = function () {
-        _super.prototype.onLeave.call(this);
         this.background.unload();
+    };
+    /**
+     * Gère les interractions avec les elements
+     * @param x position x du clic
+     * @param y position y du clic
+     */
+    SceneLivingRoom.prototype.interact = function (x, y) {
+        for (var i = 0; i != this.entities.length; i++) {
+            var entity = this.entities[i];
+            if (entity != null && entity.contains(x, y) && entity.interact() == true)
+                break;
+        }
     };
     //Importance de la gravité
     SceneLivingRoom.Gravity = 4;

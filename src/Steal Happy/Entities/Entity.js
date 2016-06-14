@@ -1,5 +1,5 @@
 /**
- * Représente une entité interractive
+ * Représente une entité interactive
  */
 var Entity = (function () {
     function Entity(x, y, width, height, file) {
@@ -126,6 +126,16 @@ var Entity = (function () {
      */
     Entity.prototype.draw = function () {
         this.sprite.draw(Greeter.Context);
+    };
+    /**
+     * Retourne si le point passé en paramètre est contenu dans la bounding box de l'entité
+     * @param x position xu point à tester
+     * @param y position y du point à tester
+     */
+    Entity.prototype.contains = function (x, y) {
+        if (x >= this.X() && x <= this.X() + this.Width() && y >= this.Y() && y <= this.Y() + this.Height())
+            return true;
+        return false;
     };
     return Entity;
 }());

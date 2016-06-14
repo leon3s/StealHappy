@@ -1,4 +1,4 @@
-﻿class Scene {
+﻿abstract class Scene {
     protected entities: Array<Entity>;
     protected transition: Transition;
 
@@ -62,12 +62,17 @@
     }
 
     //Doit être appelé lors de l'entrée dans la scene
-    public onEnter(): void {
-
-    }
+    public abstract onEnter(): void;
 
     //Doit être appelé lors de la sortie de la scene
-    public onLeave(): void {
+    public abstract onLeave(): void;
 
-    }
+    /**
+     * Gère l'action sur les clics
+     * @param x position x du clic
+     * @param y position y du clic
+     */
+    public abstract interact(x:number, y :number): void;
+
+
 }

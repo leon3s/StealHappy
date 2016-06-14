@@ -1,5 +1,5 @@
 ﻿/**
- * Représente une entité interractive 
+ * Représente une entité interactive 
  */
 abstract class Entity {
     protected x: number;
@@ -159,7 +159,18 @@ abstract class Entity {
     /**
      * Détermine l'interracion sur le personnage
      */
-    public abstract interract(): boolean;
+    public abstract interact(): boolean;
+
+    /**
+     * Retourne si le point passé en paramètre est contenu dans la bounding box de l'entité
+     * @param x position xu point à tester
+     * @param y position y du point à tester
+     */
+    public contains(x: number, y: number): boolean {
+        if (x >= this.X() && x <= this.X() + this.Width() && y >= this.Y() && y <= this.Y() + this.Height())
+            return true;
+        return false;
+    }
 
 
 }

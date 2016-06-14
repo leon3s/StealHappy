@@ -51,12 +51,6 @@ var Scene = (function () {
             entity.draw();
         });
     };
-    //Doit être appelé lors de l'entrée dans la scene
-    Scene.prototype.onEnter = function () {
-    };
-    //Doit être appelé lors de la sortie de la scene
-    Scene.prototype.onLeave = function () {
-    };
     return Scene;
 }());
 //# sourceMappingURL=Scene.js.map

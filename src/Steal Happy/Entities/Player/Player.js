@@ -8,6 +8,9 @@ var Player = (function (_super) {
     function Player() {
         _super.call(this, 0, 0, 0, 0, "");
     }
+    Player.prototype.interact = function () {
+        return false;
+    };
     return Player;
 }(Entity));
 //# sourceMappingURL=Player.js.map

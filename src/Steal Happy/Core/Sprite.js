@@ -18,7 +18,15 @@ var Sprite = (function () {
         this.frame = 0;
         this.origin_x = 0;
         this.origin_y = 0;
+        this.framespeed = Sprite.FrameSpeed;
     }
+    /**
+     * Règle la vitesse de défilement
+     * @param speed vitesse de défilement
+     */
+    Sprite.prototype.setFrameSpeed = function (speed) {
+        this.framespeed = speed;
+    };
     /**
      * Met à jour le point à partir duquel le sprite est dessiné
      * @param x nouvelle position x origine
@@ -54,6 +62,9 @@ var Sprite = (function () {
      * @param context Contexte  2D de canvas
      */
     Sprite.prototype.draw = function (context) {
+        this.frame += this.framespeed;
+        if (Math.floor(this.frame) * this.width >= this.image.width)
+            this.frame = 0;
         /*context.fillStyle = "#FF0000";
         context.fillRect(this.x, this.y, this.width, this.height);
         context.fillStyle = "#00FF00";
@@ -76,6 +87,7 @@ var Sprite = (function () {
         this.image = null;
         //TODO: Trouver un moyen d'appeler garbage collect
     };
+    Sprite.FrameSpeed = 0.25;
     return Sprite;
 }());
 //# sourceMappingURL=Sprite.js.map

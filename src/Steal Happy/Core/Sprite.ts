@@ -1,4 +1,7 @@
 ﻿class Sprite {
+
+    private static FrameSpeed: number = 0.25;
+
     private x: number;
     private y: number;
     private width: number; 
@@ -8,6 +11,7 @@
     private frame: number;
     private origin_x: number;
     private origin_y: number;
+    private framespeed: number;
 
     /**
      * Créer un nouveau sprite
@@ -28,6 +32,15 @@
         this.frame = 0;
         this.origin_x = 0;
         this.origin_y = 0;
+        this.framespeed = Sprite.FrameSpeed;
+    }
+
+    /**
+     * Règle la vitesse de défilement 
+     * @param speed vitesse de défilement
+     */
+    public setFrameSpeed(speed: number): void {
+        this.framespeed = speed;
     }
 
     /**
@@ -69,6 +82,10 @@
      * @param context Contexte  2D de canvas
      */
     public draw(context: CanvasRenderingContext2D) {
+
+        this.frame += this.framespeed;
+        if (Math.floor(this.frame) * this.width >= this.image.width)
+            this.frame = 0;
 
         /*context.fillStyle = "#FF0000";
         context.fillRect(this.x, this.y, this.width, this.height);

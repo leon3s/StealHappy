@@ -8,6 +8,18 @@ class PlayerBaby extends Player {
         this.setSprite(new Sprite(this.X(), this.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
         this.getSprite().setOrigin(64, 64);
         this.setSize(78, 128);
+        this.sprite.setFrameSpeed(0.1);
+    }
+
+    /**
+     * Actions à effectuer lors du clic sur le personnage
+     */
+    public interact(): boolean {
+        if (super.interact() == true)
+            return true;
+        if (this.VelocityY() == 0)
+            this.setVelocity(this.VelocityX(), this.VelocityY() - 100);
+        return true;
     }
 
 }
