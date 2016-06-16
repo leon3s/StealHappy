@@ -6,7 +6,7 @@ var Greeter = (function () {
     }
     Greeter.prototype.start = function () {
         var _this = this;
-        this.timer = setInterval(function () { _this.update(); }, 20);
+        this.timer = setInterval(function () { _this.update(); }, 30);
         FactoryScene.SetScene(new SceneLivingRoom());
         document.getElementById(Greeter.CanvasName).addEventListener('click', function (e) {
             FactoryScene.instance.interact(e.offsetX, e.offsetY);

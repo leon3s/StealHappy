@@ -13,7 +13,7 @@
     }
 
     public start(): void {
-        this.timer = setInterval(() => { this.update() }, 20);
+        this.timer = setInterval(() => { this.update() }, 30);
         FactoryScene.SetScene(new SceneLivingRoom());
         document.getElementById(Greeter.CanvasName).addEventListener('click', function (e) {
             FactoryScene.instance.interact(e.offsetX, e.offsetY);

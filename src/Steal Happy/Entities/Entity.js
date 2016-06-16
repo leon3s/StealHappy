@@ -1,6 +1,6 @@
 /**
- * Représente une entité interactive
- */
+* Représente une entité interactive
+*/
 var Entity = (function () {
     function Entity(x, y, width, height, file) {
         this.gravity = true;
@@ -134,6 +134,25 @@ var Entity = (function () {
      */
     Entity.prototype.contains = function (x, y) {
         if (x >= this.X() && x <= this.X() + this.Width() && y >= this.Y() && y <= this.Y() + this.Height())
+            return true;
+        return false;
+    };
+    /**
+     * Indique si l'entité entre en collision avec cette entité
+     * @param other Entité à tester
+     */
+    Entity.prototype.intersectWith = function (other) {
+        return this.intersect(other.X(), other.Y(), other.Width(), other.Height());
+    };
+    /**
+     * Indique si le carré passé en paramètre rentre en collision avec la bouding box de l'entité
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
+    Entity.prototype.intersect = function (x, y, width, height) {
+        if (x + width >= this.x && x <= this.x + this.width && y + height >= this.y && y <= this.y + this.height)
             return true;
         return false;
     };

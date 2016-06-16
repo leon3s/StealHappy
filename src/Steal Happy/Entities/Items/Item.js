@@ -8,6 +8,9 @@ var Item = (function (_super) {
     function Item() {
         _super.apply(this, arguments);
     }
+    Item.prototype.interact = function () {
+        return false;
+    };
     return Item;
 }(Entity));
 //# sourceMappingURL=Item.js.map

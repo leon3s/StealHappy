@@ -21,13 +21,25 @@ var SceneLivingRoom = (function (_super) {
      * Gère la physique dans la scene
      */
     SceneLivingRoom.prototype.physics = function () {
+        var self = this;
         this.entities.forEach(function (entity) {
             //Gestion de la gravité
             if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && entity.VelocityY() > 0) {
                 entity.bounceY();
             }
-            else
+            else {
                 entity.setVelocity(entity.VelocityX(), entity.VelocityY() + SceneLivingRoom.Gravity);
+                //gestion de la collision avec les autres entités
+                self.entities.forEach(function (other) {
+                    if (other == entity)
+                        return;
+                    if (entity.intersectWith(other)) {
+                        entity.bounceX();
+                        entity.bounceY();
+                    }
+                });
+            }
+            //Collision avec les bords
             if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && Math.abs(entity.VelocityY()) <= SceneLivingRoom.Gravity)
                 entity.setVelocity(entity.VelocityX(), 0);
         });

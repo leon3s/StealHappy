@@ -172,5 +172,26 @@ abstract class Entity {
         return false;
     }
 
+    /**
+     * Indique si l'entité entre en collision avec cette entité
+     * @param other Entité à tester
+     */
+    public intersectWith(other: Entity): boolean {
+        return this.intersect(other.X(), other.Y(), other.Width(), other.Height());
+    }
+
+    /**
+     * Indique si le carré passé en paramètre rentre en collision avec la bouding box de l'entité
+     * @param x 
+     * @param y
+     * @param width
+     * @param height
+     */
+    public intersect(x: number, y: number, width: number, height: number): boolean {
+        if (x + width >= this.x && x <= this.x + this.width && y + height >= this.y && y <= this.y + this.height)
+            return true;
+        return false;
+    }
+
 
 }
