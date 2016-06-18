@@ -2,6 +2,7 @@
     protected entities: Array<Entity>;
     protected transition: Transition;
 
+
     constructor() {
         this.entities = new Array<Entity>();
     }

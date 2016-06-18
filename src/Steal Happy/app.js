@@ -9,7 +9,17 @@ var Greeter = (function () {
         this.timer = setInterval(function () { _this.update(); }, 30);
         FactoryScene.SetScene(new SceneLivingRoom());
         document.getElementById(Greeter.CanvasName).addEventListener('click', function (e) {
-            FactoryScene.instance.interact(e.offsetX, e.offsetY);
+            var xpos;
+            var ypos;
+            if (e.offsetX == undefined) {
+                xpos = e.pageX - document.getElementById(Greeter.CanvasName).offsetLeft;
+                ypos = e.pageY - document.getElementById(Greeter.CanvasName).offsetTop;
+            }
+            else {
+                xpos = e.offsetX;
+                ypos = e.offsetY;
+            }
+            FactoryScene.instance.interact(xpos, ypos);
         });
     };
     Greeter.prototype.stop = function () {

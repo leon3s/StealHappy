@@ -75,6 +75,7 @@ var SceneLivingRoom = (function (_super) {
      * @param y position y du clic
      */
     SceneLivingRoom.prototype.interact = function (x, y) {
+        console.log("clic " + x + " " + y);
         for (var i = 0; i != this.entities.length; i++) {
             var entity = this.entities[i];
             if (entity != null && entity.contains(x, y) && entity.interact() == true)

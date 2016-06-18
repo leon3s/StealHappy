@@ -16,7 +16,19 @@
         this.timer = setInterval(() => { this.update() }, 30);
         FactoryScene.SetScene(new SceneLivingRoom());
         document.getElementById(Greeter.CanvasName).addEventListener('click', function (e) {
-            FactoryScene.instance.interact(e.offsetX, e.offsetY);
+        	var xpos : number;
+        	var ypos : number; 
+			if(e.offsetX==undefined) // this works for Firefox
+			{
+			    xpos = e.pageX-document.getElementById(Greeter.CanvasName).offsetLeft;
+			    ypos = e.pageY-document.getElementById(Greeter.CanvasName).offsetTop;
+			}             
+			else                     // works in Google Chrome
+			{
+				xpos = e.offsetX;
+				ypos = e.offsetY;
+			}
+            FactoryScene.instance.interact(xpos, ypos);
         });
     }
 

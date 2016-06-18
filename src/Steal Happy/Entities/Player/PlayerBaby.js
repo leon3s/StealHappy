@@ -4,8 +4,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
-* Implémentation concrète de player, pour l'age bébé
-*/
+ * Implémentation concrète de player, pour l'age bébé
+ */
 var PlayerBaby = (function (_super) {
     __extends(PlayerBaby, _super);
     function PlayerBaby() {
