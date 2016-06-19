@@ -8,42 +8,22 @@
     //Image de fond
     private background : Sprite = null;
 
+    //Objet de gestion de collisions
+    private collider : Collider;
+
+
+    constructor() 
+    {
+    	super();
+    	this.collider = new Collider();
+    }
+
     /**
      * Met à jour la scene
      */
     public update(): void {
         super.update();
-        this.physics();
-    }
-
-    /**
-     * Gère la physique dans la scene
-     */
-    public physics(): void {
-        var self = this;
-        this.entities.forEach(function (entity) {
-
-            //Gestion de la gravité
-            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && entity.VelocityY() > 0) {
-                entity.bounceY();
-            }
-            else {
-                entity.setVelocity(entity.VelocityX(), entity.VelocityY() + SceneLivingRoom.Gravity);
-                //gestion de la collision avec les autres entités
-                self.entities.forEach(function (other) {
-                    if (other == entity)
-                        return;
-                    if (entity.intersectWith(other)) {
-                        entity.bounceX();
-                        entity.bounceY();
-                    }
-                });
-            }
-            //Collision avec les bords
-            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && Math.abs(entity.VelocityY()) <= SceneLivingRoom.Gravity)
-                entity.setVelocity(entity.VelocityX(), 0);
-
-        });
+        this.collider.do(this.entities);
     }
 
     /**

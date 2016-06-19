@@ -1,6 +1,14 @@
 ﻿<Properties StartupItem="Steal Happy/Steal Happy.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="/opt/brackets/brackets" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Steal Happy/Core/Vector.ts">
+    <Files>
+      <File FileName="Steal Happy/Core/Collider.ts" Line="13" Column="6" />
+      <File FileName="Steal Happy/Core/Geometry.ts" Line="14" Column="5" />
+      <File FileName="Steal Happy/Core/Vector.ts" Line="41" Column="15" />
+      <File FileName="Steal Happy/Core/Point.ts" Line="24" Column="5" />
+      <File FileName="Steal Happy/index.html" Line="10" Column="42" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
