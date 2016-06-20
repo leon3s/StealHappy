@@ -62,8 +62,8 @@
     public interact(x: number, y: number) {
         for (var i: number = 0; i != this.entities.length; i++) {
             var entity: Entity = this.entities[i];
-            
-            if (entity != null && entity.contains(x,y) && entity.interact() == true)
+
+            if (entity != null && entity.getBox().contains(new Point(x,y)) && entity.interact() == true)
                 break;
         }
     }

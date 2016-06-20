@@ -120,8 +120,13 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="Core\Collider.ts" />
+    <TypeScriptCompile Include="Core\Geometry.ts" />
+    <TypeScriptCompile Include="Core\Point.ts" />
+    <TypeScriptCompile Include="Core\Rect.ts" />
     <TypeScriptCompile Include="Core\Sprite.ts" />
     <TypeScriptCompile Include="Core\Transition.ts" />
+    <TypeScriptCompile Include="Core\Vector.ts" />
     <TypeScriptCompile Include="Entities\Entity.ts" />
     <TypeScriptCompile Include="Entities\Items\Item.ts" />
     <TypeScriptCompile Include="Entities\Player\Player.ts" />
@@ -139,11 +144,6 @@
     <None Include="web.Release.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
-    <None Include="Core\Collider.ts" />
-    <None Include="Core\Vector.ts" />
-    <None Include="Core\Geometry.ts" />
-    <None Include="Core\Rect.ts" />
-    <None Include="Core\Point.ts" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

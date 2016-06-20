@@ -1,16 +1,15 @@
-﻿interface Geometry
-{
-	x : number; 
-	y : number; 
+﻿interface Geometry {
+    x: number;
+    y: number;
 
 	/**
 	 * Retourne la position x 
 	 **/
-	public X() : number;
+    X(): number;
 
 
 	/**
 	 * Retourne la position y
 	 */
-	public Y() : number;
+    Y(): number;
 }

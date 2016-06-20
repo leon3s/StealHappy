@@ -6,43 +6,17 @@ var __extends = (this && this.__extends) || function (d, b) {
 var SceneLivingRoom = (function (_super) {
     __extends(SceneLivingRoom, _super);
     function SceneLivingRoom() {
-        _super.apply(this, arguments);
+        _super.call(this);
         //Image de fond
         this.background = null;
+        this.collider = new Collider();
     }
     /**
      * Met à jour la scene
      */
     SceneLivingRoom.prototype.update = function () {
         _super.prototype.update.call(this);
-        this.physics();
-    };
-    /**
-     * Gère la physique dans la scene
-     */
-    SceneLivingRoom.prototype.physics = function () {
-        var self = this;
-        this.entities.forEach(function (entity) {
-            //Gestion de la gravité
-            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && entity.VelocityY() > 0) {
-                entity.bounceY();
-            }
-            else {
-                entity.setVelocity(entity.VelocityX(), entity.VelocityY() + SceneLivingRoom.Gravity);
-                //gestion de la collision avec les autres entités
-                self.entities.forEach(function (other) {
-                    if (other == entity)
-                        return;
-                    if (entity.intersectWith(other)) {
-                        entity.bounceX();
-                        entity.bounceY();
-                    }
-                });
-            }
-            //Collision avec les bords
-            if (entity.Y() + entity.Height() >= SceneLivingRoom.Ground && Math.abs(entity.VelocityY()) <= SceneLivingRoom.Gravity)
-                entity.setVelocity(entity.VelocityX(), 0);
-        });
+        this.collider.do(this.entities);
     };
     /**
      * Dessine la scene
@@ -75,10 +49,9 @@ var SceneLivingRoom = (function (_super) {
      * @param y position y du clic
      */
     SceneLivingRoom.prototype.interact = function (x, y) {
-        console.log("clic " + x + " " + y);
         for (var i = 0; i != this.entities.length; i++) {
             var entity = this.entities[i];
-            if (entity != null && entity.contains(x, y) && entity.interact() == true)
+            if (entity != null && entity.getBox().contains(new Point(x, y)) && entity.interact() == true)
                 break;
         }
     };

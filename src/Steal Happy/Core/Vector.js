@@ -1,33 +1,28 @@
-﻿class Vector implements Geometry {
-    x: number;
-    y: number;
-
-    constructor(x: number, y: number) {
+var Vector = (function () {
+    function Vector(x, y) {
         this.x = x;
         this.y = y;
     }
-
     /**
      * Retourne la position x du point d'orrigine du vecteur
      */
-    public X(): number {
+    Vector.prototype.X = function () {
         return this.x;
-    }
-
+    };
     /**
      * Retourne la position y du point d'origine du vecteur
      */
-    public Y(): number {
+    Vector.prototype.Y = function () {
         return this.y;
-    }
-
+    };
     /**
      * Multiplie le vecteur pas la constante passée en paramètre
      * @param po constante
      */
-    public multiply(po: number): void {
+    Vector.prototype.multiply = function (po) {
         this.x *= po;
         this.y *= po;
-    }
-
-}
+    };
+    return Vector;
+}());
+//# sourceMappingURL=Vector.js.map

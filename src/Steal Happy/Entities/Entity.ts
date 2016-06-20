@@ -162,36 +162,20 @@ abstract class Entity {
     public abstract interact(): boolean;
 
     /**
-     * Retourne si le point passé en paramètre est contenu dans la bounding box de l'entité
-     * @param x position xu point à tester
-     * @param y position y du point à tester
+     * Retourne la bounding box sous la forme d'un objet rectangle
      */
-    public contains(x: number, y: number): boolean {
-        if (x >= this.X() && x <= this.X() + this.Width() && y >= this.Y() && y <= this.Y() + this.Height())
-            return true;
-        return false;
+    public getBox(): Rect {
+        return new Rect(this.x, this.y, this.width, this.height); 
     }
 
     /**
-     * Indique si l'entité entre en collision avec cette entité
-     * @param other Entité à tester
+     * Retourne le vecteur de velocité
      */
-    public intersectWith(other: Entity): boolean {
-        return this.intersect(other.X(), other.Y(), other.Width(), other.Height());
+    public getVector(): Vector {
+        return new Vector(this.x, this.y);
     }
 
-    /**
-     * Indique si le carré passé en paramètre rentre en collision avec la bouding box de l'entité
-     * @param x 
-     * @param y
-     * @param width
-     * @param height
-     */
-    public intersect(x: number, y: number, width: number, height: number): boolean {
-        if (x + width >= this.x && x <= this.x + this.width && y + height >= this.y && y <= this.y + this.height)
-            return true;
-        return false;
-    }
+
 
 
 }
