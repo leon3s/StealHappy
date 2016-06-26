@@ -18,6 +18,20 @@ var Rect = (function () {
         return this.y;
     };
     /**
+     * Détermine la valeur de x
+     * @param x
+     */
+    Rect.prototype.setX = function (x) {
+        this.x = x;
+    };
+    /**
+     * Détermine la valeur de y
+     * @param y
+     */
+    Rect.prototype.setY = function (y) {
+        this.y = y;
+    };
+    /**
      * Retourne la largeur du rectangle
      */
     Rect.prototype.Width = function () {
@@ -55,6 +69,26 @@ var Rect = (function () {
         if (point.X() >= this.X() && point.X() <= this.X() + this.Width() && point.Y() >= this.Y() && point.Y() <= this.Y() + this.Height())
             return true;
         return false;
+    };
+    /**
+     * Calcule la pénétration d'un rectangle dans un autre
+     * @param other Rectangle contenant les informations de pénétration x: par la gauche, y: par le haut, w : par la droite, h : par le bas
+     */
+    Rect.prototype.caculatePenetration = function (other) {
+        var res = new Rect(0, 0, 0, 0);
+        //pénétration par la gauche 
+        if (other.X() < this.x + this.width / 2)
+            res.x = this.x - (other.X() + other.Width());
+        //pénétration par le haut
+        if (other.Y() < this.y + this.height / 2)
+            res.y = this.y - (other.Y() + other.Height());
+        //pénétration par la droite
+        if (other.X() >= this.x + this.width / 2)
+            res.width = other.X() - this.x + this.width;
+        //pénétration par le bas
+        if (other.Y() >= this.y + this.height / 2)
+            res.height = this.y + this.height - other.Y();
+        return res;
     };
     return Rect;
 }());

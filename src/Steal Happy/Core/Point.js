@@ -36,6 +36,20 @@ var Point = (function () {
     Point.prototype.distance = function (other) {
         return Math.abs(this.X() - other.X()) + Math.abs(this.Y() - other.Y());
     };
+    /**
+     * Détermine la valeur de x
+     * @param x
+     */
+    Point.prototype.setX = function (x) {
+        this.x = x;
+    };
+    /**
+     * Détermine la valeur de y
+     * @param y
+     */
+    Point.prototype.setY = function (y) {
+        this.y = y;
+    };
     return Point;
 }());
 //# sourceMappingURL=Point.js.map

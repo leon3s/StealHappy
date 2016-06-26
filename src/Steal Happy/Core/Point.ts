@@ -46,4 +46,20 @@ class Point implements Geometry {
     public distance(other: Point): number {
         return Math.abs(this.X() - other.X()) + Math.abs(this.Y() - other.Y());
     }
+
+    /**
+     * Détermine la valeur de x
+     * @param x 
+     */
+    public setX(x: number): void {
+        this.x = x;
+    }
+
+    /**
+     * Détermine la valeur de y
+     * @param y
+     */
+    public setY(y: number): void {
+        this.y = y;
+    }
 }

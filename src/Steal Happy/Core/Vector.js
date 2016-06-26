@@ -16,6 +16,20 @@ var Vector = (function () {
         return this.y;
     };
     /**
+     * Détermine la valeur de x
+     * @param x
+     */
+    Vector.prototype.setX = function (x) {
+        this.x = x;
+    };
+    /**
+     * Détermine la valeur de y
+     * @param y
+     */
+    Vector.prototype.setY = function (y) {
+        this.y = y;
+    };
+    /**
      * Multiplie le vecteur pas la constante passée en paramètre
      * @param po constante
      */

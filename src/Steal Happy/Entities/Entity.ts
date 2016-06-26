@@ -140,6 +140,8 @@ abstract class Entity {
      */
     public bounceX(): void {
         this.velocity_x = this.velocity_x * -0.5;
+        if (Math.abs(this.getVector().X()) * 0.03 < 1)
+            this.setVelocity(0, this.getVector().Y());
     }
 
     /**
@@ -147,6 +149,8 @@ abstract class Entity {
      */
     public bounceY(): void {
         this.velocity_y = this.velocity_y * - 0.5;
+        if (Math.abs(this.getVector().Y()) * 0.03 < 1)
+            this.setVelocity(this.getVector().X(), 0);
     }
 
     /**
@@ -172,7 +176,7 @@ abstract class Entity {
      * Retourne le vecteur de velocité
      */
     public getVector(): Vector {
-        return new Vector(this.x, this.y);
+        return new Vector(this.velocity_x, this.velocity_y);
     }
 
 

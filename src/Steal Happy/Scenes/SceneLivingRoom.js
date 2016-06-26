@@ -9,7 +9,7 @@ var SceneLivingRoom = (function (_super) {
         _super.call(this);
         //Image de fond
         this.background = null;
-        this.collider = new Collider();
+        this.collider = new Collider(SceneLivingRoom.Gravity, SceneLivingRoom.Ground);
     }
     /**
      * Met à jour la scene

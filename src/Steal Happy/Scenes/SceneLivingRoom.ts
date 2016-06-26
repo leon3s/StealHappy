@@ -14,8 +14,8 @@
 
     constructor() 
     {
-    	super();
-    	this.collider = new Collider();
+        super();
+        this.collider = new Collider(SceneLivingRoom.Gravity, SceneLivingRoom.Ground);
     }
 
     /**

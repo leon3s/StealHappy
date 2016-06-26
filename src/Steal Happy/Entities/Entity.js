@@ -1,6 +1,6 @@
 /**
- * Représente une entité interactive
- */
+* Représente une entité interactive
+*/
 var Entity = (function () {
     function Entity(x, y, width, height, file) {
         this.gravity = true;
@@ -114,12 +114,16 @@ var Entity = (function () {
      */
     Entity.prototype.bounceX = function () {
         this.velocity_x = this.velocity_x * -0.5;
+        if (Math.abs(this.getVector().X()) * 0.03 < 1)
+            this.setVelocity(0, this.getVector().Y());
     };
     /**
      * Fait rebondir l'entité sur l'axe y
      */
     Entity.prototype.bounceY = function () {
         this.velocity_y = this.velocity_y * -0.5;
+        if (Math.abs(this.getVector().Y()) * 0.03 < 1)
+            this.setVelocity(this.getVector().X(), 0);
     };
     /**
      * Dessine l'entité
@@ -137,7 +141,7 @@ var Entity = (function () {
      * Retourne le vecteur de velocité
      */
     Entity.prototype.getVector = function () {
-        return new Vector(this.x, this.y);
+        return new Vector(this.velocity_x, this.velocity_y);
     };
     return Entity;
 }());

@@ -22,6 +22,23 @@
     }
 
     /**
+     * Détermine la valeur de x
+     * @param x
+     */
+    public setX(x: number): void {
+        this.x = x;
+    }
+
+    /**
+     * Détermine la valeur de y
+     * @param y
+     */
+    public setY(y: number): void {
+        this.y = y;
+    }
+
+
+    /**
      * Multiplie le vecteur pas la constante passée en paramètre
      * @param po constante
      */
