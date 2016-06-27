@@ -4,6 +4,14 @@ var Vector = (function () {
         this.y = y;
     }
     /**
+     * Créer un vecteur allant du point first au point second
+     * @param first
+     * @param second
+     */
+    Vector.CreateFromPoints = function (first, second) {
+        return new Vector(second.X() - first.X(), second.Y() - first.Y());
+    };
+    /**
      * Retourne la position x du point d'orrigine du vecteur
      */
     Vector.prototype.X = function () {

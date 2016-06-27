@@ -1,6 +1,6 @@
 /**
-* Représente une entité interactive
-*/
+ * Représente une entité interactive
+ */
 var Entity = (function () {
     function Entity(x, y, width, height, file) {
         this.gravity = true;

@@ -76,18 +76,42 @@ var Rect = (function () {
      */
     Rect.prototype.caculatePenetration = function (other) {
         var res = new Rect(0, 0, 0, 0);
+        //Calculation des points
+        var this_top_left = new Point(this.x, this.y);
+        var this_top_right = new Point(this.x + this.width, this.y);
+        var this_bottom_left = new Point(this.x, this.y + this.height);
+        var this_bottom_right = new Point(this.x + this.width, this.y + this.height);
+        var other_top_left = new Point(other.X(), other.Y());
+        var other_top_right = new Point(other.X() + other.Width(), other.Y());
+        var other_bottom_left = new Point(other.X(), other.Y() + other.Height());
+        var other_bottom_right = new Point(other.X() + other.Width(), other.Y() + other.Height());
         //pénétration par la gauche 
-        if (other.X() < this.x + this.width / 2)
-            res.x = this.x - (other.X() + other.Width());
+        if (this.contains(other_bottom_right)) {
+            res.x = Vector.CreateFromPoints(other_bottom_right, this_top_left).X();
+        }
+        //pénétration par la droite
+        if (this.width != other.width && this.contains(other_top_left)) {
+            res.width = Vector.CreateFromPoints(this_bottom_right, other_top_left).X();
+        }
+        //pénétration par le haut
+        if (this.contains(other_top_right)) {
+            res.y = Vector.CreateFromPoints(this_bottom_left, other_top_right).Y();
+        }
+        //pénétration par le bas
+        if (this.contains(other_bottom_left)) {
+            res.height = Vector.CreateFromPoints(other_bottom_left, this_top_right).Y();
+        }
+        /*if (other.X() < this.x + this.width / 2)
+            res.x =  this.x - (other.X() + other.Width());
         //pénétration par le haut
         if (other.Y() < this.y + this.height / 2)
-            res.y = this.y - (other.Y() + other.Height());
+            res.y = this.y - (other.Y() + other.Height()) ;
         //pénétration par la droite
-        if (other.X() >= this.x + this.width / 2)
+        if (other.X() >= this.x + this.width/2)
             res.width = other.X() - this.x + this.width;
         //pénétration par le bas
         if (other.Y() >= this.y + this.height / 2)
-            res.height = this.y + this.height - other.Y();
+            res.height = this.y + this.height - other.Y();*/
         return res;
     };
     return Rect;

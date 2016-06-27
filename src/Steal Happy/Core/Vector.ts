@@ -2,6 +2,15 @@
     x: number;
     y: number;
 
+    /**
+     * Créer un vecteur allant du point first au point second
+     * @param first
+     * @param second
+     */
+    public static CreateFromPoints(first: Point, second: Point): Vector {
+        return new Vector(second.X() - first.X(), second.Y() - first.Y());
+    }
+
     constructor(x: number, y: number) {
         this.x = x;
         this.y = y;

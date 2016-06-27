@@ -22,8 +22,10 @@ var Collider = (function () {
             }
             //gestion des collision entre entités
             entities.forEach(function (other) {
-                if (entity != other && self.collid(entity, other))
+                if (entity != other && self.collid(entity, other)) {
+                    console.log("Collid");
                     self.calculatePosition(entity, other);
+                }
             });
         });
     };
@@ -62,6 +64,7 @@ var Collider = (function () {
         var rect = other_box.caculatePenetration(current_box);
         var vx = current.getVector().X();
         var vy = current.getVector().Y();
+        console.log(rect);
         //détermination des valeurs de gauche 
         if (rect.X() < 0) {
             vx = current.getVector().X() - Math.abs(rect.X() / 0.03);

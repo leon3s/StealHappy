@@ -35,7 +35,7 @@ var SceneLivingRoom = (function (_super) {
             this.background.load();
         //instanciation du joueur
         //TODO: revoir l'instanciation en fonction de l'état réel 
-        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 0));
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2 + 2, 0));
     };
     /**
      * Action réalisée lors de la sortie de la scene
