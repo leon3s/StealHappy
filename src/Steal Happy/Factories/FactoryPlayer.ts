@@ -20,6 +20,7 @@ class FactoryPlayer {
                 break;
         }
         player.setPosition(x - player.Width() / 2, y - player.Height() / 2);
+        player.setName("First");
         return player;
     }
 }

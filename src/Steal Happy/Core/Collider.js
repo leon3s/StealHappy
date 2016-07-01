@@ -19,6 +19,7 @@ var Collider = (function () {
             else if (entity.gravity) {
                 entity.setPosition(entity.getBox().X(), self.Ground - entity.Height());
                 entity.bounceY();
+                entity.setVelocity(entity.getVector().X() / 2, entity.getVector().Y());
             }
             //gestion des collision entre entités
             entities.forEach(function (other) {
@@ -64,18 +65,19 @@ var Collider = (function () {
         var rect = other_box.caculatePenetration(current_box);
         var vx = current.getVector().X();
         var vy = current.getVector().Y();
+        console.log(current);
         console.log(rect);
         //détermination des valeurs de gauche 
-        if (rect.X() < 0) {
-            vx = current.getVector().X() - Math.abs(rect.X() / 0.03);
+        if (rect.X() < 0 && Math.abs(rect.X()) < Math.abs(rect.Y())) {
+            vx = current.getVector().X() - Math.abs(rect.X()) - 1;
         }
         //détermination des valeurs du haut
         if (rect.Y() < 0) {
             vy = current.getVector().Y() - Math.abs(rect.Y() / 0.03);
         }
         //détermination des valeurs de droite
-        if (rect.Width() < 0) {
-            vx = current.getVector().X() - Math.abs(rect.Width() / 0.03);
+        if (rect.Width() < 0 && Math.abs(rect.Width()) < Math.abs(rect.Y())) {
+            vx = current.getVector().X() + Math.abs(rect.Width()) + 1;
         }
         //détermination des valeurs du bas
         if (rect.Height() < 0) {

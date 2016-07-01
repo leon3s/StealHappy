@@ -8,6 +8,18 @@ var Player = (function (_super) {
     function Player() {
         _super.call(this, 0, 0, 0, 0, "");
     }
+    /**
+     * Retourne nom de du joueur
+     */
+    Player.prototype.Name = function () {
+        return name;
+    };
+    /**
+     * Permet de choisir le nom du joueur
+     **/
+    Player.prototype.setName = function (name) {
+        this.name = name;
+    };
     Player.prototype.interact = function () {
         return false;
     };

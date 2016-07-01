@@ -85,33 +85,47 @@ var Rect = (function () {
         var other_top_right = new Point(other.X() + other.Width(), other.Y());
         var other_bottom_left = new Point(other.X(), other.Y() + other.Height());
         var other_bottom_right = new Point(other.X() + other.Width(), other.Y() + other.Height());
-        //pénétration par la gauche 
-        if (this.contains(other_bottom_right)) {
-            res.x = Vector.CreateFromPoints(other_bottom_right, this_top_left).X();
-        }
-        //pénétration par la droite
-        if (this.width != other.width && this.contains(other_top_left)) {
-            res.width = Vector.CreateFromPoints(this_bottom_right, other_top_left).X();
-        }
-        //pénétration par le haut
-        if (this.contains(other_top_right)) {
-            res.y = Vector.CreateFromPoints(this_bottom_left, other_top_right).Y();
-        }
-        //pénétration par le bas
+        var vector;
+        //penetration supérieur 
         if (this.contains(other_bottom_left)) {
-            res.height = Vector.CreateFromPoints(other_bottom_left, this_top_right).Y();
+            vector = Vector.CreateFromPoints(other_bottom_left, this_top_left);
+            res.setY(vector.Y());
         }
-        /*if (other.X() < this.x + this.width / 2)
-            res.x =  this.x - (other.X() + other.Width());
-        //pénétration par le haut
-        if (other.Y() < this.y + this.height / 2)
-            res.y = this.y - (other.Y() + other.Height()) ;
-        //pénétration par la droite
-        if (other.X() >= this.x + this.width/2)
-            res.width = other.X() - this.x + this.width;
-        //pénétration par le bas
-        if (other.Y() >= this.y + this.height / 2)
-            res.height = this.y + this.height - other.Y();*/
+        else if (this.contains(other_bottom_right)) {
+            vector = Vector.CreateFromPoints(other_bottom_right, this_top_right);
+            res.setY(vector.Y());
+        }
+        //penetration inférieur
+        if (this.contains(other_top_left)) {
+            vector = Vector.CreateFromPoints(other_top_left, this_bottom_left);
+            res.height = vector.Y();
+        }
+        else if (this.contains(other_top_right)) {
+            vector = Vector.CreateFromPoints(other_top_right, this_bottom_right);
+            res.height = vector.Y();
+        }
+        //penetration gauche
+        if (this.x != other.x) {
+            if (this.contains(other_top_right)) {
+                vector = Vector.CreateFromPoints(other_top_right, this_top_left);
+                res.x = vector.X();
+            }
+            else if (this.contains(other_bottom_right)) {
+                vector = Vector.CreateFromPoints(other_bottom_right, this_bottom_right);
+                res.x = vector.X();
+            }
+        }
+        //penetration droite
+        if (this.x != other.x) {
+            if (this.contains(other_top_left)) {
+                vector = Vector.CreateFromPoints(this_top_right, other_top_left);
+                res.width = vector.X();
+            }
+            else if (this.contains(other_bottom_left)) {
+                vector = Vector.CreateFromPoints(this_bottom_right, other_bottom_left);
+                res.width = vector.X();
+            }
+        }
         return res;
     };
     return Rect;

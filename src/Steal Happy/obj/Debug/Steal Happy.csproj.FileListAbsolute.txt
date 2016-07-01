@@ -10,3 +10,9 @@ C:\Users\Clovis\Documents\Développement\JS\StealHappy\src\Steal Happy\obj\Debug
 C:\Users\Clovis\Documents\Développement\JS\StealHappy\src\Steal Happy\bin\Steal Happy.dll.config
 C:\Users\Clovis\Documents\Développement\JS\StealHappy\src\Steal Happy\bin\Steal Happy.dll
 C:\Users\Clovis\Documents\Développement\JS\StealHappy\src\Steal Happy\bin\Steal Happy.pdb
+C:\Users\Clovis\Documents\developpement\JS\StealHappy\src\Steal Happy\bin\Steal Happy.dll.config
+C:\Users\Clovis\Documents\developpement\JS\StealHappy\src\Steal Happy\bin\Steal Happy.dll
+C:\Users\Clovis\Documents\developpement\JS\StealHappy\src\Steal Happy\bin\Steal Happy.pdb
+C:\Users\Clovis\Documents\developpement\JS\StealHappy\src\Steal Happy\obj\Debug\Steal Happy.csprojResolveAssemblyReference.cache
+C:\Users\Clovis\Documents\developpement\JS\StealHappy\src\Steal Happy\obj\Debug\Steal Happy.dll
+C:\Users\Clovis\Documents\developpement\JS\StealHappy\src\Steal Happy\obj\Debug\Steal Happy.pdb

@@ -4,8 +4,8 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
- * Implémentation concrète de player, pour l'age bébé
- */
+* Implémentation concrète de player, pour l'age bébé
+*/
 var PlayerBaby = (function (_super) {
     __extends(PlayerBaby, _super);
     function PlayerBaby() {
@@ -21,7 +21,9 @@ var PlayerBaby = (function (_super) {
     PlayerBaby.prototype.interact = function () {
         if (_super.prototype.interact.call(this) == true)
             return true;
-        FactoryScene.instance.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 0));
+        var p = FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 0);
+        p.setName("Second");
+        FactoryScene.instance.addEntity(p);
         if (this.VelocityY() == 0)
             this.setVelocity(this.VelocityX(), this.VelocityY() - 100);
         return true;
