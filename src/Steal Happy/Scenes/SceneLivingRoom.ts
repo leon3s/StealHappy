@@ -44,7 +44,8 @@
             this.background.load();
         //instanciation du joueur
         //TODO: revoir l'instanciation en fonction de l'état réel 
-        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width/2-2, 0));
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 0));
+
     }
 
     /**
@@ -60,11 +61,14 @@
      * @param y position y du clic
      */
     public interact(x: number, y: number) {
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, x, y));
+
+        /*
         for (var i: number = 0; i != this.entities.length; i++) {
             var entity: Entity = this.entities[i];
 
             if (entity != null && entity.getBox().contains(new Point(x,y)) && entity.interact() == true)
                 break;
-        }
+        }*/
     }
 }

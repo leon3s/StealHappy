@@ -97,11 +97,11 @@ var Rect = (function () {
         }
         //penetration inférieur
         if (this.contains(other_top_left)) {
-            vector = Vector.CreateFromPoints(other_top_left, this_bottom_left);
+            vector = Vector.CreateFromPoints(this_bottom_left, other_top_left);
             res.height = vector.Y();
         }
         else if (this.contains(other_top_right)) {
-            vector = Vector.CreateFromPoints(other_top_right, this_bottom_right);
+            vector = Vector.CreateFromPoints(this_bottom_right, other_top_right);
             res.height = vector.Y();
         }
         //penetration gauche

@@ -7,6 +7,7 @@ abstract class Entity {
     protected z: number;
     protected width: number;
     protected height: number; 
+    protected onCollid: boolean;
 
     protected velocity_x: number;
     protected velocity_y: number; 
@@ -25,6 +26,15 @@ abstract class Entity {
         this.width = width;
         this.height = height;
         this.sprite = new Sprite(this.x, this.y, this.width, this.height, file);
+    }
+
+    
+    public setOnCollid(collid: boolean): void {
+        this.onCollid = collid;
+    }
+
+    public OnCollid(): boolean {
+        return this.onCollid;
     }
 
     /**
@@ -127,8 +137,8 @@ abstract class Entity {
      */
     public update(): void {
         //console.log("y " + this.velocity_y);
-        if (Math.abs(this.velocity_x) < 1) this.velocity_x = 0;
-        if (Math.abs(this.velocity_y) < 1) this.velocity_y = 0;
+        if (Math.abs(this.velocity_x) < 2) this.velocity_x = 0;
+        if (Math.abs(this.velocity_y) < 2) this.velocity_y = 0;
         this.x += 0.03 * this.velocity_x;
         this.y += 0.03 * this.velocity_y;
 

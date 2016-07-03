@@ -17,9 +17,9 @@ class PlayerBaby extends Player {
     public interact(): boolean {
         if (super.interact() == true)
             return true;
-        var p: Player = FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 0);
+       /* var p: Player = FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 350);
         p.setName("Second");
-        FactoryScene.instance.addEntity(p);
+        FactoryScene.instance.addEntity(p);*/
         if (this.VelocityY() == 0)
             this.setVelocity(this.VelocityX(), this.VelocityY() - 100);
         return true;

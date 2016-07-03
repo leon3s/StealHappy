@@ -35,7 +35,7 @@ var SceneLivingRoom = (function (_super) {
             this.background.load();
         //instanciation du joueur
         //TODO: revoir l'instanciation en fonction de l'état réel 
-        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2 - 2, 0));
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, Greeter.Width / 2, 0));
     };
     /**
      * Action réalisée lors de la sortie de la scene
@@ -49,11 +49,14 @@ var SceneLivingRoom = (function (_super) {
      * @param y position y du clic
      */
     SceneLivingRoom.prototype.interact = function (x, y) {
-        for (var i = 0; i != this.entities.length; i++) {
-            var entity = this.entities[i];
-            if (entity != null && entity.getBox().contains(new Point(x, y)) && entity.interact() == true)
+        this.addEntity(FactoryPlayer.CreatePlayer(EnumPlayerAge.Baby, x, y));
+        /*
+        for (var i: number = 0; i != this.entities.length; i++) {
+            var entity: Entity = this.entities[i];
+
+            if (entity != null && entity.getBox().contains(new Point(x,y)) && entity.interact() == true)
                 break;
-        }
+        }*/
     };
     //Importance de la gravité
     SceneLivingRoom.Gravity = 4;

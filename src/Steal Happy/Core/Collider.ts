@@ -16,24 +16,31 @@
 
         var self: Collider = this;
         entities.forEach(function (entity) {
-            //gestion de la gravité
-            if (entity.gravity && entity.Y() + entity.Height() < self.Ground) {
-                entity.setVelocity(entity.getVector().X(), entity.getVector().Y() + (self.Ground * 0.03));
-            }
-            else if (entity.gravity) {
-                entity.setPosition(entity.getBox().X(), self.Ground - entity.Height());
-                entity.bounceY();
-                entity.setVelocity(entity.getVector().X() / 2, entity.getVector().Y());
-            }
 
+            entity.setOnCollid(false);
             //gestion des collision entre entités
             entities.forEach(function (other) {
                 if (entity != other && self.collid(entity, other)) {
-                    console.log("Collid");
+                    entity.setOnCollid(true);
                     self.calculatePosition(entity, other);
                 }
+
             });
+            self.gravity(entity);
         });
+    }
+
+    private gravity(entity: Entity): void {
+        //gestion de la gravité
+        if (entity.gravity && entity.Y() + entity.Height() < this.Ground) {
+            if (entity.OnCollid() == false)
+                entity.setVelocity(entity.getVector().X(), entity.getVector().Y() + (this.Ground * 0.03));
+        }
+        else if (entity.gravity) {
+            entity.setPosition(entity.getBox().X(), this.Ground - entity.Height());
+            entity.bounceY();
+            entity.setVelocity(entity.getVector().X() / 2, entity.getVector().Y());
+        }
     }
 
     /**
@@ -82,19 +89,20 @@
         console.log(rect);
         //détermination des valeurs de gauche 
         if (rect.X() < 0 && Math.abs(rect.X()) < Math.abs(rect.Y())) {
-            vx = current.getVector().X() - Math.abs(rect.X()) -1;
+
+            vx = rect.X() -1;
         }
         //détermination des valeurs du haut
         if (rect.Y() < 0) {
-            vy = current.getVector().Y() - Math.abs(rect.Y() / 0.03);
+            vy = -Math.abs(rect.Y());
         }
         //détermination des valeurs de droite
         if (rect.Width() < 0 && Math.abs(rect.Width()) < Math.abs(rect.Y())) {
-            vx = current.getVector().X() + Math.abs(rect.Width()) +1;
+            vx = Math.abs(rect.Width()) +1;
         }
         //détermination des valeurs du bas
         if (rect.Height() < 0) {
-            vy = current.getVector().Y() - Math.abs(rect.Height() / 0.03);
+            vy = Math.abs(rect.Height()) +1;
         }
         current.setVelocity(vx, vy);
 

@@ -1,6 +1,6 @@
 /**
-* Représente une entité interactive
-*/
+ * Représente une entité interactive
+ */
 var Entity = (function () {
     function Entity(x, y, width, height, file) {
         this.gravity = true;
@@ -13,6 +13,12 @@ var Entity = (function () {
         this.height = height;
         this.sprite = new Sprite(this.x, this.y, this.width, this.height, file);
     }
+    Entity.prototype.setOnCollid = function (collid) {
+        this.onCollid = collid;
+    };
+    Entity.prototype.OnCollid = function () {
+        return this.onCollid;
+    };
     /**
      * Détermine la vitesse de l'entité
      * @param x nouvelle vitesse x
@@ -101,9 +107,9 @@ var Entity = (function () {
      */
     Entity.prototype.update = function () {
         //console.log("y " + this.velocity_y);
-        if (Math.abs(this.velocity_x) < 1)
+        if (Math.abs(this.velocity_x) < 2)
             this.velocity_x = 0;
-        if (Math.abs(this.velocity_y) < 1)
+        if (Math.abs(this.velocity_y) < 2)
             this.velocity_y = 0;
         this.x += 0.03 * this.velocity_x;
         this.y += 0.03 * this.velocity_y;
