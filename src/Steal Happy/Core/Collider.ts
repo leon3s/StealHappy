@@ -49,6 +49,10 @@
      * @param other
      */
     private collid(current: Entity, other: Entity): boolean {
+        if (current.Collision() == false || other.Collision() == false)
+            return false;
+        if (current.Z() != other.Z())
+            return false;
         var current_box: Rect = current.getBox();
         var current_vector: Vector = current.getVector();
         var other_box: Rect = other.getBox();
@@ -89,12 +93,14 @@
         console.log(rect);
         //détermination des valeurs de gauche 
         if (rect.X() < 0 && Math.abs(rect.X()) < Math.abs(rect.Y())) {
-
-            vx = rect.X() -1;
+            vx =  rect.X() -1;
         }
         //détermination des valeurs du haut
         if (rect.Y() < 0) {
-            vy = -Math.abs(rect.Y());
+            vy = current.getVector().Y();
+            if (vy > 0)
+                vy = 0;
+            vy += -Math.abs(rect.Y());
         }
         //détermination des valeurs de droite
         if (rect.Width() < 0 && Math.abs(rect.Width()) < Math.abs(rect.Y())) {
@@ -102,7 +108,10 @@
         }
         //détermination des valeurs du bas
         if (rect.Height() < 0) {
-            vy = Math.abs(rect.Height()) +1;
+            vy = current.getVector().Y();
+            if (vy < 0)
+                vy = 0;
+            vy += Math.abs(rect.Height()) +1;
         }
         current.setVelocity(vx, vy);
 

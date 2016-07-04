@@ -4,6 +4,7 @@
 var Entity = (function () {
     function Entity(x, y, width, height, file) {
         this.gravity = true;
+        this.collision = true;
         this.velocity_x = 0;
         this.velocity_y = 0;
         this.x = x;
@@ -13,6 +14,9 @@ var Entity = (function () {
         this.height = height;
         this.sprite = new Sprite(this.x, this.y, this.width, this.height, file);
     }
+    Entity.prototype.Collision = function () {
+        return this.collision;
+    };
     Entity.prototype.setOnCollid = function (collid) {
         this.onCollid = collid;
     };
@@ -67,6 +71,9 @@ var Entity = (function () {
      */
     Entity.prototype.Y = function () {
         return this.y;
+    };
+    Entity.prototype.Z = function () {
+        return this.z;
     };
     /**
      * Retourne la largeur de l'entité

@@ -41,6 +41,10 @@ var Collider = (function () {
      * @param other
      */
     Collider.prototype.collid = function (current, other) {
+        if (current.Collision() == false || other.Collision() == false)
+            return false;
+        if (current.Z() != other.Z())
+            return false;
         var current_box = current.getBox();
         var current_vector = current.getVector();
         var other_box = other.getBox();
@@ -78,7 +82,10 @@ var Collider = (function () {
         }
         //détermination des valeurs du haut
         if (rect.Y() < 0) {
-            vy = -Math.abs(rect.Y());
+            vy = current.getVector().Y();
+            if (vy > 0)
+                vy = 0;
+            vy += -Math.abs(rect.Y());
         }
         //détermination des valeurs de droite
         if (rect.Width() < 0 && Math.abs(rect.Width()) < Math.abs(rect.Y())) {
@@ -86,7 +93,10 @@ var Collider = (function () {
         }
         //détermination des valeurs du bas
         if (rect.Height() < 0) {
-            vy = Math.abs(rect.Height()) + 1;
+            vy = current.getVector().Y();
+            if (vy < 0)
+                vy = 0;
+            vy += Math.abs(rect.Height()) + 1;
         }
         current.setVelocity(vx, vy);
     };

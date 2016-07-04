@@ -13,11 +13,13 @@ abstract class Entity {
     protected velocity_y: number; 
 
     public gravity: boolean;
+    protected collision: boolean;
 
     protected sprite: Sprite;
 
     constructor(x: number, y: number, width: number, height: number, file: string) {
         this.gravity = true;
+        this.collision = true;
         this.velocity_x = 0;
         this.velocity_y = 0;
         this.x = x;
@@ -26,6 +28,10 @@ abstract class Entity {
         this.width = width;
         this.height = height;
         this.sprite = new Sprite(this.x, this.y, this.width, this.height, file);
+    }
+
+    public Collision(): boolean {
+        return this.collision;
     }
 
     
@@ -91,6 +97,10 @@ abstract class Entity {
      */
     public Y(): number {
         return this.y
+    }
+
+    public Z(): number {
+        return this.z;
     }
 
     /**
