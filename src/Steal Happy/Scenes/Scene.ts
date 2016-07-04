@@ -14,6 +14,14 @@
     public addEntity(entity: Entity): void {
         if(entity != null)
             this.entities.push(entity);
+        this.entities.sort(function (a: Entity, b: Entity) {
+            if (a.Z() > b.Z())
+                return 1;
+            else if (a.Z() < b.Z())
+                return -1;
+            else
+                return 0;
+        });
     }
 
     /**
@@ -46,9 +54,26 @@
     {
         if (this.transition != null)
             this.transition = this.transition.update();
+        this.organize();
         this.entities.forEach(function (entity) {
             entity.update();
+            
         });
+    }
+
+    public organize(): void {
+        var index: number;
+        //on selectionne une entité au hasard
+        index = Math.round( Math.random() * (this.entities.length - 1) + 1);
+        var current: Entity;
+        current = this.entities[index];
+        if (current == null)
+            return;
+        if (current.Z() < this.entities[index - 1].Z()) {
+            this.entities.slice(index, 1);
+            this.addEntity(current);
+        }
+
     }
 
     /**

@@ -6,8 +6,8 @@ class PlayerBaby extends Player {
     constructor() {
         super();
         this.setSprite(new Sprite(this.X(), this.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
-        this.getSprite().setOrigin(64, 64);
-        this.setSize(78, 128);
+        this.getSprite().setOrigin(64, 76);
+        this.setSize(78, 118);
         this.sprite.setFrameSpeed(0.1);
     }
 

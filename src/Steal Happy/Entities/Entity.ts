@@ -73,6 +73,9 @@ abstract class Entity {
      */
     public setZ(z: number): void {
         this.z = z;
+        /*this.width = this.width * (1 + (this.z / 10));
+        this.height = this.height * (1 + (this.z / 10));
+        this.sprite.setSize(this.width, this.height);*/
     }
 
     /**
@@ -177,11 +180,13 @@ abstract class Entity {
      * Dessine l'entité
      */
     public draw(): void {
+        /*Greeter.Context.fillStyle = "#0000FF";
+        Greeter.Context.fillRect(this.x, this.y, this.width, this.height);*/
         this.sprite.draw(Greeter.Context);
     }
 
     /**
-     * Détermine l'interracion sur le personnage
+     * Détermine l'interraction sur le personnage
      */
     public abstract interact(): boolean;
 

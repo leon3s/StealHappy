@@ -19,6 +19,8 @@ var Sprite = (function () {
         this.origin_x = 0;
         this.origin_y = 0;
         this.framespeed = Sprite.FrameSpeed;
+        this.frameWidth = this.width;
+        this.frameHeight = this.height;
     }
     /**
      * Règle la vitesse de défilement
@@ -57,19 +59,23 @@ var Sprite = (function () {
     Sprite.prototype.Y = function () {
         return this.y;
     };
+    Sprite.prototype.setSize = function (w, h) {
+        this.width = w;
+        this.height = h;
+    };
     /**
      * Dessine le spirte
      * @param context Contexte  2D de canvas
      */
     Sprite.prototype.draw = function (context) {
         this.frame += this.framespeed;
-        if (Math.floor(this.frame) * this.width >= this.image.width)
+        if (Math.floor(this.frame) * this.frameWidth >= this.image.width)
             this.frame = 0;
         /*context.fillStyle = "#FF0000";
         context.fillRect(this.x, this.y, this.width, this.height);
         context.fillStyle = "#00FF00";
         context.fillRect(this.x, this.y, this.width - this.origin_x, this.height - this.origin_y);*/
-        context.drawImage(this.image, Math.floor(this.frame) * this.width, 0, this.width, this.height, this.x - this.origin_x, this.y - this.origin_y, this.width, this.height);
+        context.drawImage(this.image, Math.floor(this.frame) * this.frameWidth, 0, this.frameWidth, this.frameHeight, this.x - this.origin_x, this.y - this.origin_y, this.width, this.height);
         //context.drawImage(this.image, this.x, this.y, this.width, this.height + this.y, Math.floor(this.frame) * this.width - this.origin_x, -this.origin_y, this.width, this.height);
         //console.log(this.x + " " + this.y + " " + this.width + " " + this.height);
     };

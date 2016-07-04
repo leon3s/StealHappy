@@ -50,6 +50,9 @@ var Entity = (function () {
      */
     Entity.prototype.setZ = function (z) {
         this.z = z;
+        /*this.width = this.width * (1 + (this.z / 10));
+        this.height = this.height * (1 + (this.z / 10));
+        this.sprite.setSize(this.width, this.height);*/
     };
     /**
      * Détermine la position de l'entité
@@ -142,6 +145,8 @@ var Entity = (function () {
      * Dessine l'entité
      */
     Entity.prototype.draw = function () {
+        /*Greeter.Context.fillStyle = "#0000FF";
+        Greeter.Context.fillRect(this.x, this.y, this.width, this.height);*/
         this.sprite.draw(Greeter.Context);
     };
     /**

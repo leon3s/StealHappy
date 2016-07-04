@@ -4,15 +4,15 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /**
-* Implémentation concrète de player, pour l'age bébé
-*/
+ * Implémentation concrète de player, pour l'age bébé
+ */
 var PlayerBaby = (function (_super) {
     __extends(PlayerBaby, _super);
     function PlayerBaby() {
         _super.call(this);
         this.setSprite(new Sprite(this.X(), this.Y(), 205, 205, "Assets/Entities/Player/Baby.png"));
-        this.getSprite().setOrigin(64, 64);
-        this.setSize(78, 128);
+        this.getSprite().setOrigin(64, 76);
+        this.setSize(78, 118);
         this.sprite.setFrameSpeed(0.1);
     }
     /**
